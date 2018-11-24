@@ -1,20 +1,39 @@
-//
-//  ViewController.swift
-//  Oof
-//
-//  Created by Finley Sampson on 24/11/2018.
-//  Copyright © 2018 Finley Sampson. All rights reserved.
-//
-
 import UIKit
+import AVFoundation
 
-class ViewController: UIViewController {
+
+class ViewController: UIViewController, AVAudioPlayerDelegate {
+    
+    var player: AVAudioPlayer = AVAudioPlayer()
+    
+    
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+     
+        do {
+        
+        let audioPlayer = Bundle.main.path(forResource: "classic_hurt", ofType: "mp3")
+            
+            try player = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPlayer!) as URL)
+
+        }
+        catch {
+            
+            //ERROR
+        }
+        
+        super.viewDidLoad()
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 
 
 }
+
 
